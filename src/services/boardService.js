@@ -28,8 +28,18 @@ const createNew = async (reqBody) => {
     // Trả kết quả về, trong Service luôn phải có return
     return getNewBoard
   } catch (error) {throw error}
+}
 
+const getDetails = async (boardId) => {
+  try {
+    const board = await boardModel.getDetails(boardId)
+    if (!board) {
+      throw new ApiError(StatusCodes.NOT_FOUND, 'Board not found!')
+    }
+    return board
+  } catch (error) {throw error}
 }
 export const boardService = {
-  createNew
+  createNew,
+  getDetails
 }
