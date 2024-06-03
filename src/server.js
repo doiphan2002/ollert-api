@@ -15,7 +15,12 @@ import { APIs_V1 } from './routes/v1'
 const START_SERVER = () => {
   const app = express()
 
+  // Enable req.boy json data
+  app.use(express.json())
+
+  // Use APIs v1
   app.use('/v1', APIs_V1)
+
 
   app.get('/', (req, res) => {
     res.end('<h1>Hello</h1>')
